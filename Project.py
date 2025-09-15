@@ -6,7 +6,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay
+from sklearn.metrics import (
+    ConfusionMatrixDisplay,
+    RocCurveDisplay,
+    PrecisionRecallDisplay,
+    precision_score,
+    recall_score,
+    accuracy_score
+)
 
 def main():
     st.title("Binary Classification Web App")
@@ -129,3 +136,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
