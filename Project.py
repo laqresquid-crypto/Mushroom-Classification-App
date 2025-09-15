@@ -20,6 +20,7 @@ def main():
     st.sidebar.title("Binary Classification Web App")
     st.markdown("Are your mushrooms edible or poisonous? 🍄")
     st.sidebar.markdown("Are your mushrooms edible or poisonous? 🍄")
+    st.markdown("This app predicts whether a mushroom is **edible or poisonous** using different machine learning classifiers.")
 
     @st.cache_resource
     def load_data():
@@ -136,4 +137,5 @@ def main():
 if __name__ == '__main__':
 
     main()
+
 
