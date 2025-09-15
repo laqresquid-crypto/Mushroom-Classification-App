@@ -5,7 +5,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import (ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay, precision_score, recall_score)
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay
 
 def main():
     st.title("Binary Classification Web App")
@@ -30,18 +31,21 @@ def main():
     def plot_metrics(metrics_list, model, x_test, y_test):
         if "Confusion Matrix" in metrics_list:
             st.subheader("Confusion Matrix")
-            ConfusionMatrixDisplay.from_estimator(model, x_test, y_test)
-            st.pyplot()
-
+            fig, ax = plt.subplots()
+            ConfusionMatrixDisplay.from_estimator(model, x_test, y_test, ax=ax)
+            st.pyplot(fig)
+    
         if "ROC Curve" in metrics_list:
             st.subheader("ROC Curve")
-            RocCurveDisplay.from_estimator(model, x_test, y_test)
-            st.pyplot()
-
+            fig, ax = plt.subplots()
+            RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax)
+            st.pyplot(fig)
+    
         if "Precision-Recall Curve" in metrics_list:
             st.subheader("Precision-Recall Curve")
-            PrecisionRecallDisplay.from_estimator(model, x_test, y_test)
-            st.pyplot()
+            fig, ax = plt.subplots()
+            PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax)
+            st.pyplot(fig)
 
     df = load_data()
     x_train, x_test, y_train, y_test = split(df)
@@ -123,4 +127,5 @@ def main():
         st.write(df)
 
 if __name__ == '__main__':
+
     main()
